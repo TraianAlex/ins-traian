@@ -12,7 +12,7 @@ const Suggestions = ({ userId }) => {
       setProfiles(response);
     }
     if (userId) {
-        suggestedProfiles();
+      suggestedProfiles();
     }
   }, [userId]);
 
@@ -36,6 +36,6 @@ const Suggestions = ({ userId }) => {
       </div>
     </div>
   ) : null;
-}
+};
 
 export default memo(Suggestions);

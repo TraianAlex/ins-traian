@@ -1,3 +1,4 @@
+/* eslint-disable jsx-a11y/img-redundant-alt */
 // @ts-nocheck
 import React, { useState, useEffect } from 'react';
 import Skeleton from 'react-loading-skeleton';
@@ -53,7 +54,7 @@ export default function Header({
       <div className="container flex justify-center">
         <img
           className="rounded-full h-40 w-40 flex"
-          alt={`${username} profile pic`}
+          alt={`${username} profile picture`}
           src={`/images/avatars/${username}.jpg`}
         />
       </div>

@@ -1,10 +1,16 @@
+// @ts-nocheck
 import React, { useState, useContext } from 'react';
 import FirebaseContext from '../../context/firebase';
 import UserContext from '../../context/user';
 
-export default function Actions({ docId, totalLikes, likedPhoto, handleFocus }) {
+export default function Actions({
+  docId,
+  totalLikes,
+  likedPhoto,
+  handleFocus,
+}) {
   const {
-    user: { uid: userId = '' }
+    user: { uid: userId = '' },
   } = useContext(UserContext);
   const [toggleLiked, setToggleLiked] = useState(likedPhoto);
   const [likes, setLikes] = useState(totalLikes);
@@ -18,11 +24,13 @@ export default function Actions({ docId, totalLikes, likedPhoto, handleFocus }) 
       .collection('photos')
       .doc(docId)
       .update({
-        likes: toggleLiked ? FieldValue.arrayRemove(userId) : FieldValue.arrayUnion(userId)
+        likes: toggleLiked
+          ? FieldValue.arrayRemove(userId)
+          : FieldValue.arrayUnion(userId),
       });
 
     setLikes((likes) => (toggleLiked ? likes - 1 : likes + 1));
-  }
+  };
 
   return (
     <>
@@ -35,8 +43,9 @@ export default function Actions({ docId, totalLikes, likedPhoto, handleFocus }) 
                 handleToggleLiked((toggleLiked) => !toggleLiked);
               }
             }}
-            className={`w-8 mr-4 select-none cursor-pointer ${toggleLiked ? 'fill-current text-red-500' : 'text-black'
-              }`}
+            className={`w-8 mr-4 select-none cursor-pointer ${
+              toggleLiked ? 'fill-current text-red-500' : 'text-black'
+            }`}
             xmlns="http://www.w3.org/2000/svg"
             fill="none"
             viewBox="0 0 24 24"
@@ -74,8 +83,10 @@ export default function Actions({ docId, totalLikes, likedPhoto, handleFocus }) 
         </div>
       </div>
       <div className="p-4 py-0">
-        <p className="font-bold">{likes === 1 ? `${likes} like` : `${likes} likes`}</p>
+        <p className="font-bold">
+          {likes === 1 ? `${likes} like` : `${likes} likes`}
+        </p>
       </div>
     </>
-  )
+  );
 }

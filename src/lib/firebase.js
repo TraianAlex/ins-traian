@@ -14,3 +14,11 @@ const firebaseConfig = {
 export default firebase.initializeApp(firebaseConfig);
 
 export const { FieldValue } = firebase.firestore;
+
+
+// const firebase = window.firebase.initializeApp(config);
+// const { FieldValue } = window.firebase.firestore;
+
+// //seedDatabase(firebase);
+
+// export { firebase, FieldValue };

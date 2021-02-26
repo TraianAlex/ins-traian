@@ -6,5 +6,5 @@ export default function Footer({ caption, username }) {
       <span className="mr-1 font-bold">{username}</span>
       <span>{caption}</span>
     </div>
-  )
+  );
 }

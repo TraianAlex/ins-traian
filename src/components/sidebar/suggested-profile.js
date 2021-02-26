@@ -3,10 +3,15 @@ import { Link } from 'react-router-dom';
 import {
   getUserByUserId,
   updateUserFollowing,
-  updateFollowedUserFollowers
+  updateFollowedUserFollowers,
 } from '../../services/firebase';
 
-export default function SuggestedProfile({ userDocId, username, profileId, userId }) {
+export default function SuggestedProfile({
+  userDocId,
+  username,
+  profileId,
+  userId,
+}) {
   const [followed, setFollowed] = useState(false);
 
   async function handleFollowUser() {
@@ -36,7 +41,7 @@ export default function SuggestedProfile({ userDocId, username, profileId, userI
           onClick={handleFollowUser}
         >
           Follow
-                </button>
+        </button>
       </div>
     </div>
   ) : null;
